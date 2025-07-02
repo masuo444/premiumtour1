@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Sake Tourism - 酒蔵専用多言語サイト×AIソムリエ構築サービス</title>
+    <meta name="description" content="貴蔵の情報提供・ヒアリングシートだけで多言語サイト×AIソムリエを最短10日で構築。海外VIPが即座に注文する酒蔵DXソリューション。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Dancing+Script:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav-brand">
+                    <a href="index.html" class="brand-link">
+                        <div class="brand-text">
+                            <h1 class="brand-logo">Premium Sake Tourism</h1>
+                            <span class="brand-tagline">酒蔵DXソリューション</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <div class="nav-menu" id="navMenu">
+                    <ul>
+                        <li><a href="#features" class="nav-link">機能・特徴</a></li>
+                        <li><a href="#pricing" class="nav-link">料金プラン</a></li>
+                        <li><a href="#process" class="nav-link">導入フロー</a></li>
+                        <li><a href="#consultation" class="nav-link">無料相談</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-right">
+                    <div class="language-selector">
+                        <select id="languageSelect">
+                            <option value="ja">🇯🇵 日本語</option>
+                            <option value="en">🇺🇸 English</option>
+                        </select>
+                    </div>
+                    <a href="#consultation" class="nav-cta-btn">無料相談予約</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background">
+            <div class="hero-pattern"></div>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>🌐 多言語サイト×AIソムリエ構築サービス</span>
+                </div>
+                <div class="hero-main-content">
+                    <h1 class="hero-title">
+                        <span class="title-main">お酒の写真と情報を送るだけで、</span>
+                        <span class="title-highlight-line">
+                            <span class="highlight-accent">世界言語対応</span> × <span class="highlight-accent">貴社専用AIソムリエ</span>が<span class="highlight-accent">最短10日</span>で完成。
+                        </span>
+                    </h1>
+                    <p class="hero-subhead">
+                        ✨ 海外バイヤー・プロフェッショナル・VIP——言語の壁をゼロにし、チャンスを逃さない。
+                    </p>
+                    <div class="hero-features-grid">
+                        <div class="hero-feature-item">
+                            <div class="feature-icon">🌐</div>
+                            <div class="feature-content">
+                                <h3>多言語ワンクリック</h3>
+                                <p>DeepL＆用語集で専門表現も正確</p>
+                            </div>
+                        </div>
+                        <div class="hero-feature-item">
+                            <div class="feature-icon">🤖</div>
+                            <div class="feature-content">
+                                <h3>AIソムリエ24h</h3>
+                                <p>米品種・酸度・ペアリングを即回答</p>
+                            </div>
+                        </div>
+                        <div class="hero-feature-item">
+                            <div class="feature-icon">📱</div>
+                            <div class="feature-content">
+                                <h3>モバイル最適化</h3>
+                                <p>海外バイヤーの80%がスマホアクセス</p>
+                            </div>
+                        </div>
+                        <div class="hero-feature-item">
+                            <div class="feature-icon">💼</div>
+                            <div class="feature-content">
+                                <h3>営業支援</h3>
+                                <p>海外バイヤーとの商談サポート</p>
+                            </div>
+                        </div>
+                        <div class="hero-feature-item">
+                            <div class="feature-icon">🏆</div>
+                            <div class="feature-content">
+                                <h3>ブランド力向上</h3>
+                                <p>プロフェッショナルな企業イメージ</p>
+                            </div>
+                        </div>
+                        <div class="hero-feature-item">
+                            <div class="feature-icon">💰</div>
+                            <div class="feature-content">
+                                <h3>売上向上</h3>
+                                <p>海外販路開拓で収益アップ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#consultation" class="cta-primary">30分無料相談を予約</a>
+                    <a href="#demo" class="cta-secondary">デモサイトを見る</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statement Section -->
+    <section class="problems" id="problems">
+        <div class="container">
+            <h2 class="section-title">海外VIPゲストとの機会損失、年間1,000万円以上</h2>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">😰</div>
+                    <h3>課題</h3>
+                    <p>海外バイヤー・ソムリエからの英語問い合わせに3日かかり、その間に他蔵へ発注</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">📉</div>
+                    <h3>現状</h3>
+                    <p>Google翻訳の不自然な日本語で専門用語が伝わらず、プレミアム価値が半減</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">💸</div>
+                    <h3>損失</h3>
+                    <p><strong>失われた売上1,000万円/年</strong><br>翻訳遅延・コミュニケーション不足による機会損失</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Real Use Cases Section -->
+    <section class="use-cases" id="use-cases">
+        <div class="container">
+            <h2 class="section-title">現場活用シーン：実際にこう使われています</h2>
+            <p class="section-subtitle">酒蔵の日常業務がどう変わるか、具体的な活用場面をご紹介</p>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-icon">📱</div>
+                    <h3>試飲カウンターで</h3>
+                    <div class="scenario">
+                        <p><strong>シーン：</strong>外国人観光客が「この酒の酸度は？」と質問</p>
+                        <p><strong>解決：</strong>QRコードをスキャン → 母国語で詳細表示 → スタッフは手を止めずに済む</p>
+                        <div class="benefit-tags">
+                            <span class="tag">✅ 説明時間50%削減</span>
+                            <span class="tag">✅ 同時に複数組対応可能</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">🏭</div>
+                    <h3>蔵見学ツアーで</h3>
+                    <div class="scenario">
+                        <p><strong>シーン：</strong>仕込み蔵で工程説明を求められる</p>
+                        <p><strong>解決：</strong>タブレット表示 → 各工程を10言語で説明 → 通訳不要で安心案内</p>
+                        <div class="benefit-tags">
+                            <span class="tag">✅ 通訳費用ゼロ</span>
+                            <span class="tag">✅ 一度に8名まで対応</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">🛒</div>
+                    <h3>直販店舗で</h3>
+                    <div class="scenario">
+                        <p><strong>シーン：</strong>商品選びに迷う海外客への接客</p>
+                        <p><strong>解決：</strong>商品ラベルのQR → 味わい・ペアリング・価格を母国語表示 → 自分で納得して購入</p>
+                        <div class="benefit-tags">
+                            <span class="tag">✅ 購入単価20%向上</span>
+                            <span class="tag">✅ 接客負担軽減</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">🌐</div>
+                    <h3>営業・展示会で</h3>
+                    <div class="scenario">
+                        <p><strong>シーン：</strong>海外バイヤーへの商品説明</p>
+                        <p><strong>解決：</strong>AIソムリエが専門用語も完璧に翻訳 → 信頼度アップ → 商談成立率向上</p>
+                        <div class="benefit-tags">
+                            <span class="tag">✅ 成約率30%向上</span>
+                            <span class="tag">✅ 専門性アピール</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+
+    <!-- Process Flow Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <h2 class="section-title">導入フロー：最短10営業日で完成</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>ヒアリング</h3>
+                        <p>30分でゴールを明確化。<br>ご納得いただけたら次へ。</p>
+                        <div class="step-detail">
+                            <small>無料相談 → 3営業日で見積&提案書送付</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>素材提供</h3>
+                        <p>ご契約&ご入金後に制作スタート</p>
+                        <div class="step-detail">
+                            <small>写真＋Excelテンプレート<br>
+                            <strong>※ご契約・着手金50%をお願いしています</strong></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>制作</h3>
+                        <p>多言語サイト構築</p>
+                        <div class="step-detail">
+                            <small>10〜20営業日で仮URL作成<br>進捗を随時ご報告</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>確認</h3>
+                        <p>内容確認・修正対応</p>
+                    </div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>お振り込み</h3>
+                        <p>残金50%のお支払い</p>
+                        <div class="step-detail">
+                            <small>ご入金確認後、24時間以内に本番環境へデプロイ開始</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="step step-final">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>🚀 公開・サービス提供</h3>
+                        <p>多言語サイト×AIソムリエの運用開始</p>
+                        <div class="step-detail">
+                            <small>✅ 本番URL発行・公開完了<br>
+                            ✅ AIソムリエ稼働開始<br>
+                            ✅ 月次サポート・更新サービス開始</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="process-note">
+                <p><strong>※ STEP②でご契約・着手金50%をお願いしています</strong><br>
+                キャッシュリスクを抑え、安定したサービス提供のためご理解をお願いいたします。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">料金プラン</h2>
+            <div class="pricing-note">
+                <p>🔄 <strong>2年目以降は自動更新で30%割引</strong> - 長期利用でお得に運用</p>
+                <p class="tax-note">※ <strong>すべて税抜き表示</strong>です</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-header">
+                        <h3>ライト</h3>
+                        <div class="price">
+                            <span class="price-main">30万円</span>
+                            <span class="price-period">/初年度</span>
+                        </div>
+                        <div class="price-renewal">
+                            <span class="renewal-text">2年目以降：21万円/年</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li>5言語対応</li>
+                        <li>銘柄数：10本まで</li>
+                        <li>高度AIソムリエ</li>
+                        <li>月1回無料更新（テキスト更新 or 画像5箇所まで）</li>
+                        <li>メールサポート</li>
+                        <li>インフラ費用込み（GPT/DeepL/CDN）</li>
+                    </ul>
+                    <a href="light-plan.html" class="plan-cta">詳細を見る</a>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="popular-badge">人気</div>
+                    <div class="plan-header">
+                        <h3>スタンダード</h3>
+                        <div class="price">
+                            <span class="price-main">50万円</span>
+                            <span class="price-period">/初年度</span>
+                        </div>
+                        <div class="price-renewal">
+                            <span class="renewal-text">2年目以降：35万円/年</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li>8言語対応</li>
+                        <li>銘柄数：20本まで</li>
+                        <li>高度AIソムリエ</li>
+                        <li>月2回無料更新（テキスト更新 or 画像5箇所まで）</li>
+                        <li>メールもしくはオンラインミーティング</li>
+                        <li>SEO最適化</li>
+                        <li>インフラ費用込み（GPT/DeepL/CDN）</li>
+                    </ul>
+                    <a href="standard-plan.html" class="plan-cta">詳細を見る</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="plan-header">
+                        <h3>プレミアム</h3>
+                        <div class="price">
+                            <span class="price-main">100万円</span>
+                            <span class="price-period">/初年度</span>
+                        </div>
+                        <div class="price-renewal">
+                            <span class="renewal-text">2年目以降：70万円/年</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li>15言語対応</li>
+                        <li>銘柄数：50本まで</li>
+                        <li>高度AIソムリエ</li>
+                        <li>月3回無料更新（テキスト更新 or 画像5箇所まで）</li>
+                        <li>メールもしくはオンラインミーティング（専任）</li>
+                        <li>SEO最適化</li>
+                        <li>カスタムデザイン</li>
+                        <li>インフラ費用込み（GPT/DeepL/CDN）</li>
+                    </ul>
+                    <a href="premium-plan.html" class="plan-cta">詳細を見る</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">よくある質問</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>AIは間違ったことを言わないですか？</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>本サービスのAIチャットは、酒造様から提供された正確な情報のみをベースに設計されており、勝手に情報を生成しないよう制御されています。FAQ形式＋限定データで構成されているため、誤回答のリスクは最小限です。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>導入後のサポートはありますか？</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい。すべてのプランに「メールサポート」が付き、スタンダード以上では「メールもしくはオンラインミーティング」対応も可能です。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>お酒の販売はできますか？</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>本サービスは<strong>「販売機能なしの案内特化サイト」</strong>です。販売免許を持たないFOMUSはお酒の販売行為を行いませんが、<strong>酒造様の公式オンラインショップへのリンク</strong>を設置することは可能です。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>写真や文章が足りないのですが大丈夫ですか？</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい、ご安心ください。既存の資料やカタログ、蔵のパンフレットから文章を再構成することも可能です。写真素材についても、足りない場合は撮影オプションをご案内しています。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>外国語の品質は大丈夫ですか？</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>多言語対応は、最先端AI翻訳で対応するため、観光客・バイヤーどちらにも伝わる品質を確保しています。文化的に適切な言い回しや、食文化との整合性にも配慮しています。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>他の酒蔵と同じようなサイトにならない？</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>全ページは個別の酒造情報・写真・銘柄・ストーリーで構成されるため、完全にオリジナルです。また、プレミアムプランでは世界観・デザインもフルカスタムできますので、ブランディングにも最適です。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>将来、通販や海外展開と連動できますか？</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい、将来的には酒造様の公式オンラインストアや越境ECへのリンクを設置したり、海外向け発信ページを構築することも可能です。FOMUS自身は酒販を行いませんが、外部と連携する構造は最初から組み込まれているため、成長に合わせてスムーズに対応できます。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>まずは試してみたいのですが...</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい、サンプルをご用意しているので、サイト後半をご確認ください。スタンダード以上のプランのお客様は、あらゆるカスタマイズが可能です。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Booking Section -->
+    <section class="consultation" id="consultation">
+        <div class="container">
+            <h2 class="section-title">30分無料相談・お申し込み</h2>
+            <div class="consultation-content">
+                <div class="consultation-benefits">
+                    <h3>相談で分かること</h3>
+                    <ul>
+                        <li>🎯 貴蔵に最適な多言語戦略</li>
+                        <li>📊 競合分析と差別化ポイント</li>
+                        <li>💰 具体的な投資回収計画</li>
+                        <li>🚀 最短導入スケジュール</li>
+                    </ul>
+                </div>
+                <div class="booking-form">
+                    <form id="consultationForm">
+                        <div class="form-group">
+                            <label>蔵名・お名前 *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>メールアドレス *</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>電話番号</label>
+                            <input type="tel" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label>現在のWebサイト</label>
+                            <input type="url" name="website" placeholder="http://">
+                        </div>
+                        <div class="form-group">
+                            <label>相談内容（任意）</label>
+                            <textarea name="message" rows="4" placeholder="ご質問・ご要望をお聞かせください"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>希望日時</label>
+                            <select name="preferred_time">
+                                <option value="">選択してください</option>
+                                <option value="平日午前">平日午前（9:00-12:00）</option>
+                                <option value="平日午後">平日午後（13:00-17:00）</option>
+                                <option value="平日夜">平日夜（18:00-20:00）</option>
+                                <option value="土日">土日（応相談）</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="form-submit">安全なSSL送信で予約</button>
+                    </form>
+                </div>
+            </div>
+            <div class="consultation-guarantee">
+                <p>🔒 お客様情報は厳重に管理し、営業目的以外では使用いたしません</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo" id="demo">
+        <div class="container">
+            <h2 class="section-title">ライブデモ</h2>
+            <div class="demo-container">
+                <div class="demo-video">
+                    <div class="video-placeholder">
+                        <div class="play-btn">▶️</div>
+                        <p>AIソムリエと多言語切替の実演動画（30秒）</p>
+                    </div>
+                </div>
+                <div class="demo-features">
+                    <h3>デモで体験できること</h3>
+                    <ul>
+                        <li>🤖 AIソムリエの即答性</li>
+                        <li>🌐 多言語ワンクリック切替</li>
+                        <li>📱 モバイル最適化UI</li>
+                        <li>⚡ 高速レスポンス</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Premium Sake Tourism</h4>
+                    <p>酒蔵専用多言語サイト×AIソムリエ。海外VIPが即座に注文する酒蔵DXソリューション。</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>サポート</h4>
+                    <ul>
+                        <li><a href="#consultation">無料相談</a></li>
+                        <li><a href="#faq">よくある質問</a></li>
+                        <li><a href="tel:03-1234-5678">📞 03-1234-5678</a></li>
+                        <li><a href="mailto:info@premium-sake-tourism.jp">📧 info@premium-sake-tourism.jp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>プラン</h4>
+                    <ul>
+                        <li><a href="light-plan.html">ライトプラン</a></li>
+                        <li><a href="standard-plan.html">スタンダードプラン</a></li>
+                        <li><a href="premium-plan.html">プレミアムプラン</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>会社情報</h4>
+                    <ul>
+                        <li><a href="/about">会社概要</a></li>
+                        <li><a href="/privacy">プライバシーポリシー</a></li>
+                        <li><a href="/terms">利用規約</a></li>
+                        <li><a href="/tokusho">特定商取引法</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Premium Sake Tourism. All rights reserved.</p>
+                <p>🍶 酒蔵DX • 多言語対応 • AIソムリエ24h</p>
+                <p class="service-provider">ウェブサービス提供：合同会社FOMUS</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-sticky-cta">
+        <a href="#consultation" class="sticky-cta-btn">30分無料相談</a>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const answer = faqItem.querySelector('.faq-answer');
+                const toggle = question.querySelector('.faq-toggle');
+                
+                faqItem.classList.toggle('active');
+                toggle.textContent = faqItem.classList.contains('active') ? '-' : '+';
+            });
+        });
+        
+        // Form submission
+        document.getElementById('consultationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('お申し込みありがとうございます。24時間以内にご連絡いたします。');
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
