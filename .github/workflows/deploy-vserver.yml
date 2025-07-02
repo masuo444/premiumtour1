@@ -1,0 +1,61 @@
+name: Deploy with Xserver DNS
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    # Method 1: XサーバーのcPanel API経由
+    - name: Update Xserver DNS via cPanel API
+      run: |
+        # XサーバーのcPanel API を使用してDNSレコードを追加/更新
+        curl -X POST "https://${{ secrets.XSERVER_DOMAIN }}:2083/execute/DNS/add_zone_record" \
+          -H "Authorization: cpanel ${{ secrets.XSERVER_USERNAME }}:${{ secrets.XSERVER_API_TOKEN }}" \
+          -H "Content-Type: application/x-www-form-urlencoded" \
+          -d "domain=fomus.jp&name=premiumtour&type=CNAME&rdata=masuo444.github.io&ttl=3600"
+    
+    # Method 2: Webhook経由での自動化（より安全な方法）
+    - name: Update DNS via Webhook
+      run: |
+        # 事前に設定したWebhookサービス経由でDNS更新
+        curl -X POST "${{ secrets.DNS_WEBHOOK_URL }}" \
+          -H "Content-Type: application/json" \
+          -H "X-API-Key: ${{ secrets.DNS_WEBHOOK_KEY }}" \
+          -d '{
+            "provider": "xserver",
+            "action": "upsert_cname",
+            "domain": "fomus.jp",
+            "subdomain": "premiumtour",
+            "target": "masuo444.github.io",
+            "ttl": 3600
+          }'
+    
+    # GitHub Pagesのカスタムドメイン設定
+    - name: Configure GitHub Pages Custom Domain
+      run: |
+        # GitHub Pages APIでカスタムドメインを設定
+        curl -X PUT \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          "https://api.github.com/repos/${{ github.repository }}/pages" \
+          -d '{"source":{"branch":"main","path":"/"},"cname":"premiumtour.fomus.jp"}'
+    
+    # サイトのデプロイ
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        cname: premiumtour.fomus.jp
+    
+    # デプロイ完了通知
+    - name: Notify Deployment Complete
+      run: |
+        echo "✅ Site deployed to https://premiumtour.fomus.jp"
+        # Slackやメール通知をここに追加可能
