@@ -1,0 +1,302 @@
+#!/bin/bash
+
+# FOMUS Site Generator - One Command Site Creation
+# 使用例: ./create-fomus-site ai-consulting ai-consulting.fomus.jp
+
+set -e
+
+# カラー定義
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+PURPLE='\033[0;35m'
+NC='\033[0m'
+
+# ロゴ表示
+show_logo() {
+    echo -e "${PURPLE}"
+    echo "  ███████╗ ██████╗ ███╗   ███╗██╗   ██╗███████╗"
+    echo "  ██╔════╝██╔═══██╗████╗ ████║██║   ██║██╔════╝"
+    echo "  █████╗  ██║   ██║██╔████╔██║██║   ██║███████╗"
+    echo "  ██╔══╝  ██║   ██║██║╚██╔╝██║██║   ██║╚════██║"
+    echo "  ██║     ╚██████╔╝██║ ╚═╝ ██║╚██████╔╝███████║"
+    echo "  ╚═╝      ╚═════╝ ╚═╝     ╚═╝ ╚═════╝ ╚══════╝"
+    echo -e "${NC}"
+    echo -e "${BLUE}  Site Generator - 静的サイト自動生成ツール${NC}"
+    echo ""
+}
+
+# ログ関数
+log_step() {
+    echo -e "${BLUE}[STEP $1]${NC} $2"
+}
+
+log_info() {
+    echo -e "${YELLOW}[INFO]${NC} $1"
+}
+
+log_success() {
+    echo -e "${GREEN}[SUCCESS]${NC} $1"
+}
+
+log_error() {
+    echo -e "${RED}[ERROR]${NC} $1"
+}
+
+# ヘルプ表示
+show_help() {
+    echo "FOMUS Site Generator - ワンコマンドサイト作成"
+    echo ""
+    echo "使用法:"
+    echo "  $0 <site-name> <domain> [template]"
+    echo ""
+    echo "パラメータ:"
+    echo "  site-name    サイト名 (例: ai-consulting)"
+    echo "  domain       完全なドメイン名 (例: ai-consulting.fomus.jp)"
+    echo "  template     テンプレート名 (省略可: landing/corporate/product)"
+    echo ""
+    echo "使用例:"
+    echo "  $0 ai-consulting ai-consulting.fomus.jp"
+    echo "  $0 new-product new-product.fomus.jp product"
+    echo ""
+    echo "必要な準備:"
+    echo "  - GitHub Personal Access Token (GITHUB_TOKEN環境変数)"
+    echo "  - GitHub CLI (gh command) のインストール"
+    echo "  - Node.js のインストール"
+}
+
+# 依存関係チェック
+check_dependencies() {
+    log_step "1" "依存関係をチェック中..."
+    
+    local missing=false
+    
+    # Node.js チェック
+    if ! command -v node &> /dev/null; then
+        log_error "Node.js がインストールされていません"
+        missing=true
+    else
+        log_info "Node.js: $(node --version)"
+    fi
+    
+    # Git チェック
+    if ! command -v git &> /dev/null; then
+        log_error "Git がインストールされていません"
+        missing=true
+    else
+        log_info "Git: $(git --version | cut -d' ' -f3)"
+    fi
+    
+    # GitHub CLI チェック (オプション)
+    if command -v gh &> /dev/null; then
+        log_info "GitHub CLI: $(gh --version | head -n1 | cut -d' ' -f3)"
+    else
+        log_info "GitHub CLI がインストールされていません (手動設定が必要)"
+    fi
+    
+    if [ "$missing" = true ]; then
+        log_error "必要な依存関係が不足しています"
+        exit 1
+    fi
+    
+    log_success "依存関係チェック完了"
+}
+
+# メイン実行関数
+main() {
+    show_logo
+    
+    # 引数チェック
+    if [ $# -lt 2 ]; then
+        log_error "引数が不足しています"
+        echo ""
+        show_help
+        exit 1
+    fi
+    
+    local SITE_NAME="$1"
+    local DOMAIN="$2"
+    local TEMPLATE="${3:-landing}"
+    local REPO_NAME="${SITE_NAME}-site"
+    local SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    local TEMP_DIR="/tmp/fomus-${SITE_NAME}-$(date +%s)"
+    
+    # バリデーション
+    if [[ ! "$DOMAIN" =~ \.fomus\.jp$ ]]; then
+        log_error "ドメインは .fomus.jp で終わる必要があります"
+        exit 1
+    fi
+    
+    log_info "🚀 サイト生成を開始します"
+    log_info "📝 サイト名: $SITE_NAME"
+    log_info "🌐 ドメイン: $DOMAIN"
+    log_info "📋 テンプレート: $TEMPLATE"
+    log_info "📦 リポジトリ名: $REPO_NAME"
+    
+    # 依存関係チェック
+    check_dependencies
+    
+    # Step 2: テンプレートサイト生成
+    log_step "2" "テンプレートサイトを生成中..."
+    
+    # 一時ディレクトリ作成
+    mkdir -p "$TEMP_DIR"
+    
+    # ベーステンプレートをコピー
+    cp -r "$SCRIPT_DIR"/* "$TEMP_DIR/" 2>/dev/null || true
+    rm -rf "$TEMP_DIR/.git" 2>/dev/null || true
+    
+    # 設定ファイル生成
+    cat > "$TEMP_DIR/config/site-config.json" << EOF
+{
+  "site": {
+    "name": "$SITE_NAME",
+    "title": "$SITE_NAME - FOMUS",
+    "description": "${SITE_NAME}のサービスサイト - 革新的なソリューションでビジネスを次のレベルへ",
+    "domain": "$DOMAIN",
+    "template": "$TEMPLATE"
+  },
+  "branding": {
+    "logo_text": "$SITE_NAME",
+    "tagline": "FOMUS Service",
+    "primary_color": "#0ABAB5",
+    "secondary_color": "#0A0A0A",
+    "accent_color": "#40E0D0"
+  },
+  "hero": {
+    "badge": "🚀 ${SITE_NAME}サービス",
+    "title_main": "革新的なソリューションで、",
+    "title_highlight": "ビジネスを次のレベルへ",
+    "subtitle": "✨ 最新テクノロジーでお客様の課題を解決します",
+    "cta_primary": "無料相談を予約",
+    "cta_secondary": "詳細を見る"
+  },
+  "contact": {
+    "email": "info@fomus.jp",
+    "phone": "03-1234-5678"
+  },
+  "company": {
+    "name": "FOMUS",
+    "full_name": "合同会社FOMUS"
+  }
+}
+EOF
+    
+    # CNAMEファイル作成
+    echo "$DOMAIN" > "$TEMP_DIR/CNAME"
+    
+    log_success "テンプレート生成完了"
+    
+    # Step 3: HTMLテンプレート処理
+    log_step "3" "HTMLファイルをカスタマイズ中..."
+    
+    # 基本的な置換処理
+    find "$TEMP_DIR" -name "*.html" -exec sed -i.bak \
+        -e "s/Premium Sake Tourism/$SITE_NAME/g" \
+        -e "s/premium-tourism.fomus.jp/$DOMAIN/g" \
+        -e "s/酒蔵DXソリューション/FOMUS Service/g" {} \;
+    
+    # バックアップファイル削除
+    find "$TEMP_DIR" -name "*.bak" -delete
+    
+    log_success "HTMLカスタマイズ完了"
+    
+    # Step 4: Git初期化
+    log_step "4" "Gitリポジトリを初期化中..."
+    
+    cd "$TEMP_DIR"
+    git init -q
+    git add .
+    git commit -q -m "Initial commit: $SITE_NAME
+
+Generated using FOMUS Site Generator
+- Template: $TEMPLATE
+- Domain: $DOMAIN  
+- Auto-deployed to GitHub Pages
+
+🤖 Generated with FOMUS Site Generator"
+    
+    log_success "Git初期化完了"
+    
+    # Step 5: GitHub連携
+    log_step "5" "GitHubにデプロイ中..."
+    
+    if command -v gh &> /dev/null; then
+        # GitHub CLIでリポジトリ作成＆プッシュ
+        gh repo create "$REPO_NAME" --public --source=. --remote=origin --push -q
+        log_success "GitHubリポジトリ作成・プッシュ完了"
+        
+        # GitHub Pages設定（ベストエフォート）
+        sleep 2
+        gh api "repos/masuo444/$REPO_NAME/pages" \
+            --method POST \
+            --field source[branch]=main \
+            --field source[path]=/ \
+            --field cname="$DOMAIN" 2>/dev/null || {
+            log_info "GitHub Pages設定は手動で行ってください"
+        }
+    else
+        # 手動設定の案内
+        log_info "GitHub CLIが利用できません。以下のURLでリポジトリを作成してください:"
+        echo "https://github.com/new"
+        echo ""
+        echo "その後、以下のコマンドを実行してください:"
+        echo "git remote add origin https://github.com/masuo444/$REPO_NAME.git"
+        echo "git push -u origin main"
+    fi
+    
+    # Step 6: 完了レポート
+    log_step "6" "設定完了レポート"
+    
+    echo ""
+    echo "🎉 サイト生成が完了しました！"
+    echo "=================================="
+    echo ""
+    echo "📁 生成されたサイト: $TEMP_DIR"
+    echo "📦 GitHubリポジトリ: https://github.com/masuo444/$REPO_NAME"
+    echo "🌐 公開予定URL: https://$DOMAIN"
+    echo ""
+    echo "📋 次に必要な作業:"
+    echo "1. Xサーバーで以下のCNAMEレコードを設定:"
+    echo "   名前: $(echo $DOMAIN | cut -d. -f1)"
+    echo "   タイプ: CNAME"
+    echo "   値: masuo444.github.io"
+    echo "   TTL: 3600"
+    echo ""
+    echo "2. DNS設定後15-60分で以下でアクセス可能:"
+    echo "   🌐 https://$DOMAIN"
+    echo ""
+    echo "3. GitHub Pages設定確認:"
+    echo "   ⚙️ https://github.com/masuo444/$REPO_NAME/settings/pages"
+    echo ""
+    echo "🔄 今後の更新方法:"
+    echo "   1. ファイルを編集"
+    echo "   2. git add . && git commit -m '更新内容'"
+    echo "   3. git push"
+    echo "   4. 1-2分後に自動反映"
+    
+    # クリーンアップ確認
+    echo ""
+    read -p "一時ディレクトリを削除しますか? (y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        rm -rf "$TEMP_DIR"
+        log_info "一時ディレクトリを削除しました"
+    else
+        log_info "サイトファイルは $TEMP_DIR に保存されています"
+    fi
+    
+    log_success "FOMUS Site Generator完了! 🚀"
+}
+
+# ヘルプオプション処理
+case "${1:-}" in
+    -h|--help|help)
+        show_help
+        exit 0
+        ;;
+esac
+
+# メイン実行
+main "$@"

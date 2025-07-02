@@ -1,0 +1,37 @@
+{
+  "site": {
+    "name": "{{SITE_NAME}}",
+    "title": "{{SITE_TITLE}}",
+    "description": "{{SITE_DESCRIPTION}}",
+    "domain": "{{DOMAIN}}",
+    "template": "{{TEMPLATE_TYPE}}"
+  },
+  "branding": {
+    "logo_text": "{{LOGO_TEXT}}",
+    "tagline": "{{TAGLINE}}",
+    "primary_color": "{{PRIMARY_COLOR}}",
+    "secondary_color": "{{SECONDARY_COLOR}}",
+    "accent_color": "{{ACCENT_COLOR}}"
+  },
+  "hero": {
+    "badge": "{{HERO_BADGE}}",
+    "title_main": "{{HERO_TITLE_MAIN}}",
+    "title_highlight": "{{HERO_TITLE_HIGHLIGHT}}",
+    "subtitle": "{{HERO_SUBTITLE}}",
+    "cta_primary": "{{CTA_PRIMARY}}",
+    "cta_secondary": "{{CTA_SECONDARY}}"
+  },
+  "features": "{{FEATURES_ARRAY}}",
+  "pricing": {
+    "note": "{{PRICING_NOTE}}",
+    "plans": "{{PRICING_PLANS}}"
+  },
+  "contact": {
+    "email": "{{CONTACT_EMAIL}}",
+    "phone": "{{CONTACT_PHONE}}"
+  },
+  "company": {
+    "name": "{{COMPANY_NAME}}",
+    "full_name": "{{COMPANY_FULL_NAME}}"
+  }
+}

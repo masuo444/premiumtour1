@@ -1,0 +1,118 @@
+{
+  "site": {
+    "name": "Premium Sake Tourism",
+    "title": "Premium Sake Tourism - 酒蔵専用多言語サイト×AIソムリエ構築サービス",
+    "description": "貴蔵の情報提供・ヒアリングシートだけで多言語サイト×AIソムリエを最短10日で構築。海外VIPが即座に注文する酒蔵DXソリューション。",
+    "domain": "premium-tourism.fomus.jp",
+    "template": "landing"
+  },
+  "branding": {
+    "logo_text": "Premium Sake Tourism",
+    "tagline": "酒蔵DXソリューション",
+    "primary_color": "#0ABAB5",
+    "secondary_color": "#0A0A0A",
+    "accent_color": "#40E0D0"
+  },
+  "hero": {
+    "badge": "🌐 多言語サイト×AIソムリエ構築サービス",
+    "title_main": "お酒の写真と情報を送るだけで、",
+    "title_highlight": "世界言語対応 × 貴社専用AIソムリエが最短10日で完成。",
+    "subtitle": "✨ 海外バイヤー・プロフェッショナル・VIP——言語の壁をゼロにし、チャンスを逃さない。",
+    "cta_primary": "30分無料相談を予約",
+    "cta_secondary": "デモサイトを見る"
+  },
+  "features": [
+    {
+      "icon": "🌐",
+      "title": "多言語ワンクリック",
+      "description": "DeepL＆用語集で専門表現も正確"
+    },
+    {
+      "icon": "🤖",
+      "title": "AIソムリエ24h",
+      "description": "米品種・酸度・ペアリングを即回答"
+    },
+    {
+      "icon": "📱",
+      "title": "モバイル最適化",
+      "description": "海外バイヤーの80%がスマホアクセス"
+    },
+    {
+      "icon": "💼",
+      "title": "営業支援",
+      "description": "海外バイヤーとの商談サポート"
+    },
+    {
+      "icon": "🏆",
+      "title": "ブランド力向上",
+      "description": "プロフェッショナルな企業イメージ"
+    },
+    {
+      "icon": "💰",
+      "title": "売上向上",
+      "description": "海外販路開拓で収益アップ"
+    }
+  ],
+  "pricing": {
+    "note": "🔄 2年目以降は自動更新で20%割引 - 長期利用でお得に運用",
+    "plans": [
+      {
+        "name": "ライト",
+        "price": "30万円",
+        "renewal": "24万円",
+        "period": "初年度",
+        "features": [
+          "5言語対応",
+          "銘柄数：10本まで",
+          "高度AIソムリエ",
+          "月1回無料更新（テキスト更新 or 画像5箇所まで）",
+          "メールサポート",
+          "インフラ費用込み（GPT/DeepL/CDN）"
+        ],
+        "link": "light-plan.html"
+      },
+      {
+        "name": "スタンダード",
+        "price": "50万円",
+        "renewal": "40万円",
+        "period": "初年度",
+        "popular": true,
+        "features": [
+          "8言語対応",
+          "銘柄数：20本まで",
+          "高度AIソムリエ",
+          "月2回無料更新（テキスト更新 or 画像5箇所まで）",
+          "メールもしくはオンラインミーティング",
+          "SEO最適化",
+          "インフラ費用込み（GPT/DeepL/CDN）"
+        ],
+        "link": "standard-plan.html"
+      },
+      {
+        "name": "プレミアム",
+        "price": "100万円",
+        "renewal": "80万円",
+        "period": "初年度",
+        "features": [
+          "15言語対応",
+          "銘柄数：50本まで",
+          "高度AIソムリエ",
+          "月3回無料更新（テキスト更新 or 画像5箇所まで）",
+          "メールもしくはオンラインミーティング（専任）",
+          "SEO最適化",
+          "カスタムデザイン",
+          "インフラ費用込み（GPT/DeepL/CDN）"
+        ],
+        "link": "premium-plan.html"
+      }
+    ]
+  },
+  "contact": {
+    "email": "info@premium-sake-tourism.jp",
+    "phone": "03-1234-5678"
+  },
+  "company": {
+    "name": "FOMUS",
+    "full_name": "合同会社FOMUS"
+  }
+}

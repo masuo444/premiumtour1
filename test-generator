@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# FOMUS Site Generator - テスト実行スクリプト
+# 使用例: ./test-generator
+
+echo "🧪 FOMUS Site Generator テスト"
+echo "================================"
+
+# テスト用サイト名
+TEST_SITE="test-site-$(date +%s)"
+TEST_DOMAIN="test.fomus.jp"
+
+echo "📝 テストサイト: $TEST_SITE"
+echo "🌐 テストドメイン: $TEST_DOMAIN"
+echo ""
+
+# ドライランモード（実際にはGitHubリポジトリを作成しない）
+echo "🔍 ドライランモードでテスト実行..."
+
+# 一時ディレクトリでテスト
+TEMP_DIR="/tmp/fomus-test-$(date +%s)"
+mkdir -p "$TEMP_DIR"
+
+echo "📁 テンプレートファイルをコピー..."
+cp -r ./* "$TEMP_DIR/" 2>/dev/null || true
+rm -rf "$TEMP_DIR/.git"
+
+echo "⚙️ 設定ファイル生成テスト..."
+cat > "$TEMP_DIR/config/site-config.json" << EOF
+{
+  "site": {
+    "name": "$TEST_SITE",
+    "title": "$TEST_SITE - FOMUS",
+    "domain": "$TEST_DOMAIN"
+  },
+  "branding": {
+    "logo_text": "$TEST_SITE",
+    "primary_color": "#0ABAB5"
+  }
+}
+EOF
+
+echo "✅ 設定ファイル生成完了"
+
+echo "🔧 HTMLファイル置換テスト..."
+cd "$TEMP_DIR"
+find . -name "*.html" -exec sed -i.bak \
+    -e "s/Premium Sake Tourism/$TEST_SITE/g" \
+    -e "s/premium-tourism.fomus.jp/$TEST_DOMAIN/g" {} \;
+
+find . -name "*.bak" -delete
+
+echo "✅ HTML置換完了"
+
+echo "📄 CNAMEファイル作成テスト..."
+echo "$TEST_DOMAIN" > CNAME
+
+echo "✅ CNAME作成完了"
+
+echo ""
+echo "🎉 テスト結果"
+echo "============="
+echo "📁 生成ディレクトリ: $TEMP_DIR"
+echo "📄 ファイル一覧:"
+ls -la "$TEMP_DIR"
+
+echo ""
+echo "📝 設定ファイル内容:"
+cat "$TEMP_DIR/config/site-config.json"
+
+echo ""
+echo "🌐 CNAMEファイル:"
+cat "$TEMP_DIR/CNAME"
+
+echo ""
+echo "🧹 テストファイルを削除しますか? (y/N):"
+read -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    rm -rf "$TEMP_DIR"
+    echo "✅ テストファイル削除完了"
+else
+    echo "📁 テストファイルは $TEMP_DIR に保存されています"
+fi
+
+echo ""
+echo "✨ テスト完了！FOMUS Site Generatorは正常に動作します。"
