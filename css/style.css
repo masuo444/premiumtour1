@@ -163,6 +163,16 @@ body {
     line-height: 1.2;
 }
 
+.brand-module {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--color-gray-600);
+    font-weight: 600;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    letter-spacing: 0.3px;
+}
+
 .brand-tagline {
     font-family: var(--font-body);
     font-size: 10px;
