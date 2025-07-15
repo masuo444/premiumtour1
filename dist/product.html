@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品詳細 - 益々酒造 | Product Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <h1 class="brand-logo">🍶 Premium Sake Tourism</h1>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="about.html" class="nav-link">酒蔵について</a>
+                <a href="process.html" class="nav-link">醸造工程</a>
+                <a href="visit.html" class="nav-link">見学・ツアー</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </div>
+            <div class="nav-right">
+                <div class="language-selector">
+                    <select id="languageSelect">
+                        <option value="en">🇺🇸 EN</option>
+                        <option value="ja">🇯🇵 JP</option>
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="zh">🇨🇳 ZH</option>
+                    </select>
+                </div>
+                <button class="cart-btn" id="cartBtn">
+                    🛒 <span id="cartCount">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html">ホーム</a>
+                <span class="breadcrumb-separator">></span>
+                <span id="productName">商品詳細</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Product Detail -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-layout">
+                <!-- Product Images -->
+                <div class="product-images">
+                    <div class="main-image">
+                        <div class="product-bottle">🍶</div>
+                    </div>
+                    <div class="image-thumbnails">
+                        <div class="thumbnail active">🍶</div>
+                        <div class="thumbnail">📦</div>
+                        <div class="thumbnail">🏷️</div>
+                    </div>
+                </div>
+
+                <!-- Product Information -->
+                <div class="product-info">
+                    <div class="product-header">
+                        <h1 id="productTitle" class="product-title">商品名</h1>
+                        <p id="productBrewery" class="product-brewery">酒蔵名</p>
+                        <div class="product-badges">
+                            <span id="productType" class="product-type">純米大吟醸</span>
+                            <span id="productLimited" class="product-limited" style="display: none;">限定品</span>
+                        </div>
+                    </div>
+
+                    <div class="product-price-section">
+                        <div class="price-container">
+                            <span class="currency">¥</span>
+                            <span id="productPrice" class="price">0</span>
+                            <span class="price-unit">/ 本</span>
+                        </div>
+                        <div class="stock-info">
+                            <span class="stock-indicator" id="stockIndicator"></span>
+                            <span id="stockText">在庫確認中</span>
+                        </div>
+                    </div>
+
+                    <div class="product-description">
+                        <h3>商品説明</h3>
+                        <p id="productDescription">商品の詳細説明がここに表示されます。</p>
+                    </div>
+
+                    <div class="product-specifications">
+                        <h3>商品仕様</h3>
+                        <div class="spec-grid">
+                            <div class="spec-item">
+                                <span class="spec-label">アルコール度数</span>
+                                <span id="specAlcohol" class="spec-value">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">精米歩合</span>
+                                <span id="specRicePolish" class="spec-value">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">使用米</span>
+                                <span id="specRiceType" class="spec-value">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">産地</span>
+                                <span id="specRegion" class="spec-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus" id="qtyMinus">-</button>
+                            <input type="number" id="quantity" value="1" min="1" max="10">
+                            <button class="qty-btn plus" id="qtyPlus">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" id="addToCartBtn">
+                            <span>カートに追加</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details Tabs -->
+    <section class="product-tabs">
+        <div class="container">
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="tasting">テイスティングノート</button>
+                <button class="tab-btn" data-tab="awards">受賞歴</button>
+                <button class="tab-btn" data-tab="pairing">料理との相性</button>
+                <button class="tab-btn" data-tab="brewing">醸造について</button>
+            </div>
+
+            <div class="tabs-content">
+                <div class="tab-panel active" id="tasting">
+                    <h3>テイスティングノート</h3>
+                    <p id="tastingNotes">この銘柄の詳細なテイスティングノートがここに表示されます。</p>
+                    <div class="tasting-chart">
+                        <div class="chart-item">
+                            <span>甘辛度</span>
+                            <div class="chart-bar">
+                                <div class="chart-fill" style="width: 30%"></div>
+                            </div>
+                            <span>辛口</span>
+                        </div>
+                        <div class="chart-item">
+                            <span>濃淡度</span>
+                            <div class="chart-bar">
+                                <div class="chart-fill" style="width: 70%"></div>
+                            </div>
+                            <span>濃醇</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="awards">
+                    <h3>受賞歴</h3>
+                    <p id="awardsInfo">この銘柄の受賞歴がここに表示されます。</p>
+                </div>
+
+                <div class="tab-panel" id="pairing">
+                    <h3>料理との相性</h3>
+                    <div class="pairing-suggestions">
+                        <div class="pairing-item">
+                            <div class="pairing-icon">🍣</div>
+                            <h4>刺身・寿司</h4>
+                            <p>繊細な魚の旨味と絶妙にマッチします。</p>
+                        </div>
+                        <div class="pairing-item">
+                            <div class="pairing-icon">🧀</div>
+                            <h4>チーズ</h4>
+                            <p>クリーミーなチーズとの組み合わせがおすすめ。</p>
+                        </div>
+                        <div class="pairing-item">
+                            <div class="pairing-icon">🍗</div>
+                            <h4>鶏料理</h4>
+                            <p>淡白な鶏肉料理との相性は抜群です。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="brewing">
+                    <h3>醸造について</h3>
+                    <div class="brewing-info">
+                        <p>この銘柄の特別な醸造方法や、使用している酵母、発酵期間などの詳細情報をご紹介します。</p>
+                        <div class="brewing-details">
+                            <div class="brewing-item">
+                                <h4>使用酵母</h4>
+                                <p>協会9号酵母を使用し、低温発酵でじっくりと醸造。</p>
+                            </div>
+                            <div class="brewing-item">
+                                <h4>発酵期間</h4>
+                                <p>約30日間の長期発酵により、深い味わいを実現。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products">
+        <div class="container">
+            <h2 class="section-title">関連商品</h2>
+            <div class="related-grid" id="relatedGrid">
+                <!-- Related products will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close" id="cartClose">&times;</button>
+        </div>
+        <div class="cart-content" id="cartContent">
+            <div class="cart-empty">
+                <p>Your cart is empty</p>
+                <div class="empty-cart-icon">🛒</div>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total: ¥<span id="cartTotal">0</span></span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>益々酒造</h4>
+                    <p>創業三百年の伝統と革新が生み出す、唯一無二の日本酒。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>サイトマップ</h4>
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="about.html">酒蔵について</a></li>
+                        <li><a href="process.html">醸造工程</a></li>
+                        <li><a href="visit.html">見学・ツアー</a></li>
+                        <li><a href="contact.html">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>お問い合わせ</h4>
+                    <p>〒xxx-xxxx<br>
+                    日本国○○県○○市○○町1-2-3<br>
+                    TEL: 0120-xxx-xxx<br>
+                    Email: info@masumasu-sake.jp</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 益々酒造. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="product.js"></script>
+</body>
+</html>
