@@ -937,6 +937,22 @@ body {
     align-items: center;
 }
 
+.visual-image {
+    background: var(--gradient-soft);
+    padding: 16px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    border: 2px solid var(--color-accent);
+}
+
+.qr-demo-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: var(--border-radius-small);
+    box-shadow: var(--shadow-medium);
+}
+
 .visual-placeholder {
     background: var(--gradient-soft);
     padding: 48px;
